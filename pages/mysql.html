@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MySQL CheatSheet - Subham Karmakar</title>
+		<meta name="description" content="MySQL CheatSheet.">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+		<link rel="manifest" href="../site.webmanifest">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		<link rel="stylesheet" href="../assets/css/main2.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload" onload="GetTheme()">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<h1 style="font-size: 3em;">MySQL CheatSheet</h1>
+				<a id="themeSwitch" onclick="ToggleTheme()" class="" style="margin-top: 1.3em;" title="Change Theme"></a>
+			</header>
+
+				
+			<!-- Main -->
+			<div id="main">
+
+				<!-- Introduction -->
+				<!-- <section id="intro" class="main special">
+					<div class="spotlight" style="text-align: left;">
+						<div class="content">
+							<p>
+								These are some of the frequently asked questions regarding WSL 2 (Windows Subsystem for Linux).
+								WSL 2 is a massive improvement over WSL 1. WSL 2 brings Full System-Call Compatibility 
+								and Much Faster I/O Performance. If you want to know about how to install/upgrade to WSL 2, 
+								check out <a href="wsl_install_instructions.html" style="font-weight: bold;">THIS</a> link.
+							</p>
+						</div>
+					</div>
+				</section> -->
+
+
+				<!-- Content -->
+				<section id="content" class="main">
+
+					<!-- 1st Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Login (Bash Commands)</p>
+						<pre style="margin-top: -2em;"><code>mysql -u root -p</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 2nd Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Exit / Clear Screen</p>
+						<p style="font-size: 1.2em; margin-top: -1.3em;">Exit</p>
+						<pre style="margin-top: -2em;"><code>exit;</code></pre>
+						
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Clear Screen</p>
+						<pre style="margin-top: -2em;"><code>system clear</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 3rd Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Create / Show / Use / Delete / Modify Database</p>
+						<p style="font-size: 1.2em; margin-top: -1.3em;">Create</p>
+						<pre style="margin-top: -2em;"><code>CREATE DATABASE DatabaseName;
+CREATE DATABASE DatabaseName CHARACTER SET utf8;</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Show</p>
+						<pre style="margin-top: -2em;"><code>SHOW DATABASES;</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Use</p>
+						<pre style="margin-top: -2em;"><code>USE DatabaseName;</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Delete</p>
+						<pre style="margin-top: -2em;"><code>DROP DATABASE DatabaseName;</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Modify</p>
+						<pre style="margin-top: -2em;"><code>ALTER DATABASE DatabaseName CHARACTER SET utf8;</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 4th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Main Data Types</p>
+						<pre style="margin-top: -2em;"><code>TINYINT (1o: -217+128)
+SMALLINT (2o: +-65 000)
+MEDIUMINT (3o: +-16 000 000)
+INT (4o: +- 2 000 000 000)
+BIGINT (8o: +-9.10^18)
+
+Precise interval: -(2^(8*N-1)) -> (2^8*N)-1
+
+*** INT(2) = "2 digits displayed" -- NOT "number with 2 digits max" !
+
+FLOAT(M,D)
+DOUBLE(M,D)
+FLOAT(D=0->53)
+
+*** 8,3 -> 12345.678 -- NOT 12345678.123 !
+
+TIME (HH:MM)
+YEAR (AAAA)
+DATE (AAAA-MM-JJ)
+DATETIME (AAAA-MM-JJ HH:MM; années 1000->9999)
+TIMESTAMP (like DATETIME, but 1970->2038, compatible with Unix)
+
+VARCHAR (single-line; explicit size)
+TEXT (multi-lines; max size=65535)
+BLOB (binary; max size=65535)
+
+Variants for TEXT&BLOB:
+`TINY` (max=255), `MEDIUM` (max=~16000), and `LONG` (max=4Go). Ex: `VARCHAR(32)`, `TINYTEXT`, `LONGBLOB`, `MEDIUMTEXT`
+
+ENUM ('value1', 'value2', ...) -- (default NULL, or '' if NOT NULL)</code></pre>
+						<hr>
+					</section>
+
+					<!-- 5th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Create / Show / Delete / Modify Table</p>
+						<p style="font-size: 1.2em; margin-top: -1.3em;">Create</p>
+						<pre style="margin-top: -2em;"><code>CREATE TABLE table (field1 type1, field2 type2);
+CREATE TABLE table (field1 type1, field2 type2, INDEX (field));
+CREATE TABLE table (field1 type1, field2 type2, PRIMARY KEY (field1));
+CREATE TABLE table (field1 type1, field2 type2, PRIMARY KEY (field1,field2));
+
+CREATE TABLE table1 (fk_field1 type1, field2 type2, ...,
+  FOREIGN KEY (fk_field1) REFERENCES table2 (t2_fieldA))
+	[ON UPDATE|ON DELETE] [CASCADE|SET NULL]
+
+CREATE TABLE table1 (fk_field1 type1, fk_field2 type2, ...,
+  FOREIGN KEY (fk_field1, fk_field2) REFERENCES table2 (t2_fieldA, t2_fieldB))
+
+CREATE TABLE table IF NOT EXISTS;
+
+CREATE TEMPORARY TABLE table;</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Show</p>
+						<pre style="margin-top: -2em;"><code>SHOW TABLES;</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Drop</p>
+						<pre style="margin-top: -2em;"><code>DROP TABLE table;
+DROP TABLE IF EXISTS table;
+DROP TABLE table1, table2, ...</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Alter</p>
+						<pre style="margin-top: -2em;"><code>ALTER TABLE table MODIFY field1 type1
+ALTER TABLE table MODIFY COLUMN field1 type1
+ALTER TABLE table MODIFY field1 type1 NOT NULL ...
+ALTER TABLE table CHANGE old_name_field1 new_name_field1 type1
+ALTER TABLE table CHANGE old_name_field1 new_name_field1 type1 NOT NULL ...
+ALTER TABLE table ALTER field1 SET DEFAULT ...
+ALTER TABLE table ALTER field1 DROP DEFAULT
+ALTER TABLE table ADD new_name_field1 type1
+ALTER TABLE table ADD new_name_field1 type1 FIRST
+ALTER TABLE table ADD new_name_field1 type1 AFTER another_field
+ALTER TABLE table DROP field1
+ALTER TABLE table ADD INDEX (field);</code></pre>
+
+						<p style="font-size: 1.2em; margin-top: 1.3em;">Change field order</p>
+						<pre style="margin-top: -2em;"><code>ALTER TABLE table MODIFY field1 type1 FIRST
+ALTER TABLE table MODIFY field1 type1 AFTER another_field
+ALTER TABLE table CHANGE old_name_field1 new_name_field1 type1 FIRST
+ALTER TABLE table CHANGE old_name_field1 new_name_field1 type1 AFTER another_field</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 6th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Browsing</p>
+						<pre style="margin-top: -2em;"><code>SHOW DATABASES;
+SHOW TABLES;
+SHOW FIELDS FROM table / DESCRIBE table;
+SHOW CREATE TABLE table;
+SHOW PROCESSLIST;
+KILL process_number;</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 7th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Select</p>
+						<pre style="margin-top: -2em;"><code>SELECT * FROM table;
+SELECT * FROM users WHERE age BETWEEN 20 AND 25;
+SELECT * FROM users WHERE dept LIKE '%e%';
+SELECT * FROM users WHERE dept NOT LIKE 'd%';
+SELECT * FROM users WHERE dept IN ('design', 'sales');
+SELECT * FROM users ORDER BY last_name ASC;
+SELECT * FROM users ORDER BY last_name DESC;
+SELECT CONCAT(first_name, ' ', last_name) AS 'Name', dept FROM users;
+SELECT * FROM table1, table2;
+SELECT field1, field2 FROM table1, table2;
+SELECT ... FROM ... WHERE condition
+SELECT ... FROM ... WHERE condition GROUPBY field;
+SELECT ... FROM ... WHERE condition GROUPBY field HAVING condition2;
+SELECT ... FROM ... WHERE condition ORDER BY field1, field2;
+SELECT ... FROM ... WHERE condition ORDER BY field1, field2 DESC;
+SELECT ... FROM ... WHERE condition LIMIT 10;
+SELECT DISTINCT field1 FROM ...
+SELECT DISTINCT field1, field2 FROM ...</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 8th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Join</p>
+						<pre style="margin-top: -2em;"><code>SELECT ... FROM t1 JOIN t2 ON t1.id1 = t2.id2 WHERE condition;
+SELECT ... FROM t1 LEFT JOIN t2 ON t1.id1 = t2.id2 WHERE condition;
+SELECT ... FROM t1 JOIN (t2 JOIN t3 ON ...) ON ...</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 9th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Conditions</p>
+						<pre style="margin-top: -2em;"><code>field1 = value1
+field1 <> value1
+field1 LIKE 'value _ %'
+field1 IS NULL
+field1 IS NOT NULL
+field1 IS IN (value1, value2)
+field1 IS NOT IN (value1, value2)
+condition1 AND condition2
+condition1 OR condition2</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 10th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Backup Database to SQL File (Bash Commands)</p>
+						<pre style="margin-top: -2em;"><code>mysqldump -u Username -p dbNameYouWant > databasename_backup.sql</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 11th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Restore from backup SQL File (Bash Commands)</p>
+						<pre style="margin-top: -2em;"><code>mysql - u Username -p dbNameYouWant < databasename_backup.sql</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 12th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Repair Tables After Unclean Shutdown (Bash Commands)</p>
+						<pre style="margin-top: -2em;"><code>mysqlcheck --all-databases
+mysqlcheck --all-databases --fast</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 13th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Insert</p>
+						<pre style="margin-top: -2em;"><code>INSERT INTO table1 (field1, field2) VALUES (value1, value2);</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 14th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Delete</p>
+						<pre style="margin-top: -2em;"><code>DELETE FROM table1 / TRUNCATE table1
+DELETE FROM table1 WHERE condition
+DELETE FROM table1, table2 FROM table1, table2 WHERE table1.id1 = table2.id2 AND condition</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 15th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Update</p>
+						<pre style="margin-top: -2em;"><code>UPDATE table1 SET field1=new_value1 WHERE condition;
+UPDATE table1, table2 SET field1=new_value1, field2=new_value2, ... WHERE table1.id1 = table2.id2 AND condition;</code></pre>
+						<hr>
+					</section>
+
+					<!-- 16th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Keys</p>
+						<pre style="margin-top: -2em;"><code>CREATE TABLE table (..., PRIMARY KEY (field1, field2))
+CREATE TABLE table (..., FOREIGN KEY (field1, field2) REFERENCES table2
+(t2_field1, t2_field2))</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 17th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Users and Privileges</p>
+						<pre style="margin-top: -2em;"><code>CREATE USER 'user'@'localhost';
+CREATE USER 'someuser'@'localhost' IDENTIFIED BY 'somepassword';
+
+SELECT User FROM mysql.user;
+SELECT User, Host FROM mysql.user;
+SELECT * FROM mysql. user
+
+
+GRANT ALL PRIVILEGES ON * . * TO 'someuser'@'localhost';
+GRANT ALL PRIVILEGES ON base.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+GRANT SELECT, INSERT, DELETE ON base.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+REVOKE ALL PRIVILEGES ON base.* FROM 'user'@'localhost'; -- one permission only
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user'@'localhost'; -- all permissions
+FLUSH PRIVILEGES;
+
+SHOW GRANTS FOR 'someuser'@'localhost';
+
+SET PASSWORD = PASSWORD('new_pass');
+SET PASSWORD FOR 'user'@'host' = PASSWORD('new_pass');
+SET PASSWORD = OLD_PASSWORD('new_pass');
+
+DROP USER 'user'@'localhost';</code></pre>
+						<hr>
+					</section>
+					
+					<!-- 18th Section -->
+					<section>
+						<p style="font-size: 1.5em; font-weight: bold;">Reset Root Password (Bash Commands)</p>
+						<pre style="margin-top: -2em;"><code>$ /etc/init.d/mysql stop
+
+$ mysqld_safe --skip-grant-tables
+
+$ mysql (On another terminal)
+mysql> UPDATE mysql.user SET password=PASSWORD('new_pass') WHERE user='root';
+
+(Switch back to the mysqld_safe terminal and kill the process using Control)
+$ /etc/init.d/mysql start</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Get Started -->
+				<!-- <section id="cta" class="main special">
+					<header class="major">
+						<h2>Congue imperdiet</h2>
+						<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+						posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
+					</header>
+					<footer class="major">
+						<ul class="actions special">
+							<li><a href="generic.html" class="button primary">Get Started</a></li>
+							<li><a href="generic.html" class="button">Learn More</a></li>
+						</ul>
+					</footer>
+				</section> -->
+
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section style="text-align: center;">
+					<img src="../images/square_crop_less.jpg" alt="" style="max-width: 93px; border-radius: 50%;" />
+					<h3 style="font-weight: bold;">Subham Karmakar</h3>
+					<p>Coding / Programming || Cloud || Software || Computers || Football</p>
+					<a href="https://www.subhamk.com" class="button">About Me</a>
+					<a href="https://blogs.subhamk.com" class="button">My Blogs</a>
+				</section>
+				<section>
+					<h2 style="text-align: center;">Follow</h2>
+					<ul class="icons" style="text-align: center;">
+						<!-- <li><a href="#" class="icon brands fa-twitter alt"></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-facebook-f alt"></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-instagram alt"></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-linkedin-in alt"></a></li> -->
+						<li><a href="https://www.github.com/SubhamK108" class="icon brands fab fa-github alt" title="GitHub"></a></li>
+						<li><a href="https://www.hackerrank.com/SubhamK108" class="icon brands fab fa-hackerrank alt" title="HackerRank"></a></li>
+						<li><a href="https://www.leetcode.com/SubhamK108" class="icon solid fas fa-code alt" title="LeetCode"></a></li>
+					</ul>
+				</section>
+			</footer>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+		<script src="../assets/js/themeChanger.js"></script>
+		<script src="../assets/js/index.js"></script>
+
+	</body>
+</html>

@@ -1,5 +1,5 @@
 
-function SearchBlogs() {
+function SearchCheatSheets() {
     var input, input2, sheet, elements, data, i, txtValue;
     input = document.getElementById("searchQue");
     input2 = input.value.toLowerCase();
