@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Blogs - Subham Karmakar</title>
+		<meta name="description" content="Coding / Programming || Cloud || Software || Computers || Football. I'm an Engineering student studying Computer Science. These are my blogs.">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+		<link rel="stylesheet" href="assets/css/main1.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	
+	<body class="is-preload" onload="GetTheme()">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<h1>My Blogs</h1>
+				<a id="themeSwitch" onclick="ToggleTheme()" class="" style="margin-top: 1.3em;" title="Change Theme"></a>
+			</header>
+			
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- Introduction -->
+				<!-- <section id="intro" class="main special"> -->
+					<!-- <div class="spotlight"> -->
+						<!-- <div class="content"> -->
+							<!-- <span class="image"><img src="images/square_crop_less.jpg" alt="" /></span> -->
+							<!-- <img src="images/square_crop_less.jpg" alt="" /> -->
+							<!-- <header class="major">
+								<h2>Subham Karmakar</h2>
+								<p style="font-weight: bold;">Coding / Programming || Cloud || Software || Computers || Football</p>
+							</header> -->
+							<!-- <h3 style="text-align: center;">Coding / Programming || Cloud || Software || Computers || Football</h3> -->
+							<!-- <p>I'm an Engineering student studying Computer Science. I live in Kolkata, West Bengal. I'm currently studying engineering (BTech) at University Of Engineering & Management, Kolkata. I absolutely love Programming and I want to be a Software Developer in the future.</p> -->
+							<!-- <ul class="actions">
+								<li><a href="generic.html" class="button">Learn More</a></li>
+							</ul> -->
+						<!-- </div> -->
+						<!-- <span class="image"><img src="images/my_pic_1.jpg" alt="" /></span> -->
+					<!-- </div> -->
+				<!-- </section> -->
+
+				<!-- First Section -->
+				<section id="first" class="main special">
+					<header class="major">
+						<h2>These are my Blogs</h2>
+						<input type="text" id="searchQue" onkeyup="SearchBlogs()" placeholder="Search for Blogs" style="height: 1.8em; width: 45%; margin: auto;">
+					</header>
+					<div class="table-wrapper">
+						<!-- Table -->
+						<table id="myBlogs" style="text-align: left; table-layout: fixed; width: 100%;">
+							<thead style="font-size: 1.4em;">
+								<tr>
+									<th style="width: 81%;">Description</th>
+									<th style="width: 19%;">Date</th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<tr>
+									<td><a href="pages/add_shadow_to_screenshots.html" style="font-weight: bold;">
+										Add Drop Shadow to Screenshots taken in Windows and Linux using the Bash shell.
+									</a></td>
+									<td>July 5th, 2020</td>
+								</tr>
+
+								<tr>
+									<td><a href="pages/powerline.html" style="font-weight: bold;">
+									    How to make your prompt pretty in terminal with Powerline.
+									</a></td>
+									<td>May 20th, 2020</td>
+								</tr>
+
+								<tr>
+									<td><a href="pages/wsl_install_instructions.html" style="font-weight: bold;">
+									    Linux on Windows. How to install Windows Subsystem for Linux (WSL).
+									</a></td>
+									<td>May 6th, 2020</td>
+								</tr>
+
+								<tr>
+									<td><a href="pages/wsl2.html" style="font-weight: bold;">
+									    WSL2 Tips & Tricks. How to change the Username, Location and Disk Size of your WSL2 distro.
+									</a></td>
+									<td>May 6th, 2020</td>
+								</tr>
+
+								<tr>
+									<td><a href="doc/Docker_CheatSheet.pdf" style="font-weight: bold;">
+									    Docker cheatsheet
+									</a></td>
+									<td>May 3rd, 2020</td>
+								</tr>
+
+								<tr>
+									<td><a href="doc/Git_CheatSheet.pdf" style="font-weight: bold;">
+									    Git cheatsheet
+									</a></td>
+									<td>May 3rd, 2020</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section style="text-align: center;">
+					<img src="images/square_crop_less.jpg" alt="" style="max-width: 93px; border-radius: 50%;" />
+					<h3 style="font-weight: bold;">Subham Karmakar</h3>
+					<p>Coding / Programming || Cloud || Software || Computers || Football</p>
+					<a href="https://www.subhamk.com" class="button">About Me</a>
+				</section>
+				<section>
+					<h2 style="text-align: center;">Follow</h2>
+					<ul class="icons" style="text-align: center;">
+						<!-- <li><a href="#" class="icon brands fa-twitter alt"></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-facebook-f alt"></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-instagram alt"></a></li> -->
+						<!-- <li><a href="#" class="icon brands fa-linkedin-in alt"></a></li> -->
+						<li><a href="https://www.github.com/SubhamK108" class="icon brands fab fa-github alt" title="GitHub"></a></li>
+						<li><a href="https://www.hackerrank.com/SubhamK108" class="icon brands fab fa-hackerrank alt" title="HackerRank"></a></li>
+						<li><a href="https://www.leetcode.com/SubhamK108" class="icon solid fas fa-code alt" title="LeetCode"></a></li>
+					</ul>
+				</section>
+			</footer>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/search.js"></script>
+		<script src="assets/js/themeChanger.js"></script>
+		<script src="assets/js/index.js"></script>
+
+	</body>
+</html>
